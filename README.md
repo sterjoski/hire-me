@@ -1,82 +1,63 @@
-# Interested in working for Famly?
+# Daycare App
 
-Give us a chance to see your beautiful code! 🤩
+A React-based project bootstrapped with Turborepo and Vite.
 
-## How to get started
+## Prerequisites
 
--   Fork this repository
--   Create a small application in React (or another agreed upon framework)
--   Describe your design decisions and setup instructions in the README.md of the forked repository
+-   Node.js (v18.x or later)
+-   pnpm (v6.x or later)
 
-## The assignment
+## Getting Started
 
-You are tasked to build a simple application for a nursery to manage the attendance of children each day.
+Follow these steps to set up and run the project locally.
 
-The application should be able to do 3 things:
+### Installation
 
-1. List children with some form of pagination/lazy-loading/infinite-scroll
-2. Checkin a child
-3. Checkout a child
+1. **Clone the repository:**
 
-Don't worry about design or anything like that.
+    ```sh
+    git clone https://github.com/sterjoski/hire-me.git
+    cd hire-me
+    ```
 
-If you have any questions feel free to reach out to the person who sent you the assignment ☺️
+2. **Install dependencies:**
 
-## API Specification
+    Ensure you have pnpm installed globally. If not, install it using:
 
-You have received an access token in the email that contained the link to this page.
+    ```sh
+    npm install -g pnpm
+    ```
 
-### Fetch some children from
+    Then, install the project dependencies:
 
-The API does not support any limit or offset, so the pagination/lazy-loading/infinite-scroll will have to be done client-side only.
+    ```sh
+    pnpm install
+    ```
 
-```
-GET https://app.famly.co/api/daycare/tablet/group
-Arguments: {
-	accessToken: <accessToken>,
-	groupId: '86413ecf-01a1-44da-ba73-1aeda212a196',
-	institutionId: 'dc4bd858-9e9c-4df7-9386-0d91e42280eb'
-}
-```
+3. **Setup Environment Variables:**
 
-Example in cURL:
+    Create a `.env` file in the `apps/daycare` directory by copying the contents of `.env.example` or by renaming `.env.example` to `.env`:
 
-```bash
-curl "https://app.famly.co/api/daycare/tablet/group?accessToken=<accessToken>&groupId=86413ecf-01a1-44da-ba73-1aeda212a196&institutionId=dc4bd858-9e9c-4df7-9386-0d91e42280eb"
-```
+    ```sh
+    cp .env.example .env
+    ```
 
-### Checkin child
+### Running the Application
 
-```
-POST https://app.famly.co/api/v2/children/<childId>/checkins
+To start the application in development mode, run:
 
-Arguments: {
-	accessToken: <accessToken>
-	pickupTime: 16:00
-}
+```sh
+pnpm dev
 ```
 
-Example in cURL:
+## Project Structure
 
-```bash
-curl \
-  -d 'accessToken=<accessToken>&pickupTime=16:00' \
-  https://app.famly.co/api/v2/children/fcd683d0-bc31-468c-948f-1ca70b91439d/checkins
-```
-
-### Checkout child
-
-```
-POST https://app.famly.co/api/v2/children/<childId>/checkout
-Arguments: {
-	accessToken: <accessToken>
-}
-```
-
-Example in cURL:
-
-```bash
-curl \
-  -d 'accessToken=<accessToken>' \
-  https://app.famly.co/api/v2/children/fcd683d0-bc31-468c-948f-1ca70b91439d/checkout
-```
+-   `apps/daycare`: The main application bootstrapped with Vite.
+-   -   `app`: Core features.
+-   -   `library/hooks`: React hooks, in this case reusable react-query hooks.
+-   -   `library/models`: Models used for tidying up the data.
+-   -   `library/services`: Domain-separated HTTP requests with model mapping
+-   `packages/eslint-config`: Shared ESLint configurations.
+-   `packages/http-client`: Axios wrapper for HTTP requests.
+-   `packages/typescript-config`: Shared TypeScript configuration files.
+-   `packages/ui`: Reusable UI components.
