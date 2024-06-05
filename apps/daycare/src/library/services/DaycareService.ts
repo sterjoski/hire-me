@@ -29,13 +29,15 @@ class DaycareService {
     }
 
     async checkinChild({ childId, pickupTime }: CheckinChildRequest) {
-        const url = `/v2/children/${childId}/checkin`
+        const url = `/v2/children/${childId}/checkins`
 
-        const payload = {
+        const params = {
             pickupTime,
         }
 
-        const { data } = await this._httpClient.post<GetChildrenListResponse>(url, payload)
+        const { data } = await this._httpClient.post<GetChildrenListResponse>(url, undefined, {
+            params,
+        })
 
         return data
     }
