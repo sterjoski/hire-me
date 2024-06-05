@@ -9,9 +9,10 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@repo/ui": "workspace:*",
         "@repo/http-client": "workspace:*",
+        "@repo/ui": "workspace:*",
         "@tanstack/react-query": "^5.40.1",
+        "date-fns": "^3.6.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
